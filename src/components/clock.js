@@ -1,14 +1,20 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 const Clock = () => {
-  // const takeDate = () => {
+  const [time, setTime] = useState(Date.now());
 
-  // }
+  useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   var date = new Date();
-  var h = date.getHours(); // 0 - 23
-  var m = date.getMinutes(); // 0 - 59
-  var s = date.getSeconds(); // 0 - 59
+  var h = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
   var session = "AM";
 
   if (h === 0) {

@@ -9,7 +9,6 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [time, setTime] = useState(Date.now());
 
   useEffect(() => {
     filterHandler();
@@ -27,13 +26,6 @@ function App() {
         setFilteredTodos(todos);
     }
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(Date.now()), 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <div className="App">
