@@ -33,38 +33,32 @@ const Todo = ({ text, todo, todos, setTodos, completed }) => {
     );
   };
 
-  var today = new Date();
-  const time =
-    today.getFullYear() +
-    ":" +
-    today.getMonth() +
-    ":" +
-    today.getDay() +
-    "   " +
-    today.getHours() +
-    ":" +
-    today.getMinutes() +
-    ":" +
-    today.getSeconds();
+  let today = new Date();
+  const time = `${today.getHours()}  ${
+    today.getMinutes() <= 9 ? `0${today.getMinutes()}` : `${today.getMinutes()}`
+  }`;
 
   return (
     <>
       <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
+        whileHover={{ scale: 1.3, zIndex: 1 }}
         layout
         className={`todo-item ${todo.completed ? "completed" : ""}`}
       >
         <div className="tile-text-area">{text}</div>
         <li className={`todo-item-li`}></li>
         <div className="button-container">
-          {timestamp}
-
+          <div
+            className={`timestamp ${
+              todo.completed ? "timestampCompleted" : ""
+            }`}
+          >
+            {timestamp}
+          </div>
           <button layout onClick={completeHandler} className={`completed-btn`}>
             <FontAwesomeIcon
               icon={todo.completed ? faToggleOn : faToggleOff}
-              className={`faAdd ${todo.completed ? "on" : ""}`}
+              className={`faAdd ${todo.completed} ? "on" : ""`}
             ></FontAwesomeIcon>
           </button>
           <button layout onClick={deleteHandler} className="trash-btn">

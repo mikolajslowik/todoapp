@@ -1,17 +1,8 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBicycle } from "@fortawesome/free-solid-svg-icons";
+import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
-const Form = ({
-  inputText,
-  setInputText,
-  todos,
-  setTodos,
-  setStatus,
-  setTimestamp,
-}) => {
-  let today = new Date();
-
+const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
   };
@@ -38,10 +29,7 @@ const Form = ({
         className="todo-input"
       ></input>
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
-        <FontAwesomeIcon
-          icon={faBicycle}
-          className="faBicycle"
-        ></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faAdd} className="fontAwesome"></FontAwesomeIcon>
       </button>
       <div className="select">
         <select onChange={handleStatus} name="todos" className="filter-todo">
